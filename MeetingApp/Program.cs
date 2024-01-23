@@ -13,6 +13,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// bu kod olmasa, bootstrap kütüphanesi gibi statik dosyalarý kullanamayacaktýk
 app.UseStaticFiles();
 
 app.UseRouting();
