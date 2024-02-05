@@ -1,11 +1,23 @@
-﻿@{
+﻿@model MeetingInfo;
+@* controllerdan gelen modeli View sayfamızda kullanabilmek için view sayfasının başına eklediğimiz kod *@
+
+@{
     ViewBag.Title = "Başvuru";
     // ViewBag degiskeni controllerda tanımlanmak zorunda değil, view sayfasında da tanımlanabilir
-    // bu örnekte, viewbag title bizim layout sayfamıza giderek kendi değerini atayacak ve sayfanın title özelliği bizim değişkenimize göre 
+    // bu örnekte, viewbag title bizim layout sayfamıza giderek kendi değerini atayacak ve sayfanın title özelliği bizim değişkenimize göre
     // değişecek.
 }
 
+<h1 class="h4">@ViewBag.Selamlama, @ViewData["Username"]</h1>
+<p>Toplantı katılım durumunuzu bildiriniz</p>
 
-<h1 class="h4">@ViewBag.Selamlama, @ViewData["Username"]</h1><p>Toplantı katılım durumunuzu bildiriniz</p>
+<div class="card my-2">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Konum: @Model.Location</li>
+        <li class="list-group-item">@Model.Date.ToString("dd/MM/yyyy HH:mm:ss") tarihinde gerçekleşecek.</li>
+        <li class="list-group-item">Katılımcı Sayısı: @Model.NumberOfPeople</li>
+        @* @Model ile controllerdaki metottan gelen model bilgisini burada kullanabiliyoruz*@
+    </ul>
+</div>
 
-<a class="btn btn-sm btn-outline-primary" asp-controller="Meeting" asp-action="Apply" >Başvuru Yap</a>
+<a class="btn btn-sm btn-outline-primary" asp-controller="Meeting" asp-action="Apply">Başvuru Yap</a>

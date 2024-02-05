@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MeetingApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MeetingApp.Controllers
 {
@@ -16,7 +17,16 @@ namespace MeetingApp.Controllers
             ViewData["Selamlama"] = saat > 12 ? "İyi Günler" : "Günaydın";
             ViewData["Username"] = "Mami";
 
-            return View(ViewData["Selamlama"]);
+            var meetingInfo = new MeetingInfo()
+            {
+                Id = 1,
+                Location = "İstanbul, ABC Kongre Merkezi",
+                Date = new DateTime(2024, 01, 20, 20, 0, 0),
+                NumberOfPeople = 73
+            };
+            // MeetingInfodan gelen modelin değerlerini girme
+
+            return View(meetingInfo);
             // bir key-value degiskeninini model olarak view sayfasına yollamak icin return View(ViewData["Selamlama"]);
         }
     }
