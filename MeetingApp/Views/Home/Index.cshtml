@@ -8,16 +8,18 @@
     // değişecek.
 }
 
-<h1 class="h4">@ViewBag.Selamlama, @ViewData["Username"]</h1>
-<p>Toplantı katılım durumunuzu bildiriniz</p>
+<main class="text-center">
+    <h1 class="h4">@ViewBag.Selamlama, @ViewData["Username"]</h1>
+    <p>Toplantı katılım durumunuzu bildiriniz</p>
 
-<div class="card my-2">
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Konum: @Model.Location</li>
-        <li class="list-group-item">@Model.Date.ToString("dd/MM/yyyy HH:mm:ss") tarihinde gerçekleşecek.</li>
-        <li class="list-group-item">Katılımcı Sayısı: @Model.NumberOfPeople</li>
-        @* @Model ile controllerdaki metottan gelen model bilgisini burada kullanabiliyoruz*@
-    </ul>
-</div>
+    <div class="card my-2">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Konum: @Model.Location</li>
+            <li class="list-group-item">@Model.Date.ToString("dd/MM/yyyy HH:mm:ss") tarihinde gerçekleşecek.</li>
+            <li class="list-group-item">Katılımcı Sayısı: @Model.NumberOfPeople</li>
+            @* @Model ile controllerdaki metottan gelen model bilgisini burada kullanabiliyoruz*@
+        </ul>
+    </div>
 
-<a class="btn btn-sm btn-outline-primary" asp-controller="Meeting" asp-action="Apply">Başvuru Yap</a>
+    <a class="btn btn-sm btn-outline-primary" asp-controller="Meeting" asp-action="Apply">Başvuru Yap</a>
+</main>
