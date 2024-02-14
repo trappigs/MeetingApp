@@ -21,7 +21,6 @@
 
             @foreach (var user in Model)
             {
-
                 var durum = user.WillAttend == true ? "Evet" : "Hayır";
                 var className = user.WillAttend == true ? "table-success" : "table-danger";
 
@@ -34,7 +33,7 @@
                     <td>@user.Name</td>
                     <td>Durum</td>
                     <td>
-                        <a href="" class="btn btn-sm btn-primary">Detay</a>
+                        <a href="/meeting/details/@user.Id" class="btn btn-sm btn-primary">Detay</a>
                     </td>
                 </tr>
             }

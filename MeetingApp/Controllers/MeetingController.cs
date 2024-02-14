@@ -51,7 +51,18 @@ namespace MeetingApp.Controllers
         [HttpGet]
         public IActionResult List()
         {
+            // Repository sınıfından Users listesini alıp, view'e gönderiyoruz
             return View(Repository.Users);
+        }
+
+        // Details sayfası için bir metot oluşturuyoruz
+        // Bu metot, id'si verilen kullanıcının detaylarını göstermek için kullanılacak
+        // id parametresi, Repository sınıfının GetById metodundan gelecek
+        // Details sayfasına gönderilen id değeriyle, id değerine göre kullanıcının detay bilgileri gösterilecek
+        // örneğin meeting/details/2 dendiğinde, Id değeri 2 olan kullanıcının biglileri gösterilecek
+        public IActionResult Details(int id)
+        {
+            return View(Repository.GetById(id));
         }
     }
 }

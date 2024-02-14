@@ -12,7 +12,6 @@ namespace MeetingApp.Controllers
             ViewBag.Selamlama = saat > 12 ? "İyi Günler" : "Günaydın";
 
 
-
             // ViewBag.Adana = "Adana";
             // ViewBag.Sayi = 25 * 5;
             // birden fazla viewbag veya viewdata tanımlanabilir, bu viewbaglere tıpkı tanımlandıkları gibi kullanarak view sayfalarında erişilebilir
