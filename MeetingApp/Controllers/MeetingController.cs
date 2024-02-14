@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MeetingApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MeetingApp.Controllers
 {
@@ -18,11 +19,18 @@ namespace MeetingApp.Controllers
             return View();
         }
 
+
+        // view sayfasından post metoduyla formdan gelen bilgileri alıp işleyecek olan metod budur.
+        // dikkat edilmesi gereken şey, view sayfasındaki değişkenlerin "name" özelliklerinin bu metotdaki parametrelerle aynı olmasıdır.
+        // ayrıca formun action özelliğinin bu metodun çalıştırılmasını sağlayacak şekilde ayarlanması gerekmektedir.
+        // bu örnekte formun action özelliği "/Meeting/Apply" şeklinde ayarlanmıştır.
+        // bu durumda form submit edildiğinde bu metot çalışacaktır.
+        // bu metotun çalışması için formun method özelliğinin "post" olması gerekmektedir.
         [HttpPost]
-        public IActionResult Apply(string Name, string Phone, string Email, bool WillAttend)
+        public IActionResult Apply(UserInfo model)
         {
-            System.Diagnostics.Debug.WriteLine(Name+"ahahahasad");
-            System.Diagnostics.Debug.WriteLine(Phone);
+            System.Diagnostics.Debug.WriteLine(model.Name+"ahahahasad");
+            System.Diagnostics.Debug.WriteLine(model.Phone);
 
             return View();
         }
