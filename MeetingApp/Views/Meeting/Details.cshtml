@@ -5,18 +5,30 @@
 
 @{
     var className = @Model.WillAttend == true ? "primary" : "danger";
+    var durum = @Model.WillAttend;
 }
 
 
 <main class="text-center">
     <h1 class="h4">Başvuru Detayı</h1>
 
+    @if (durum == true)
+    {
+        <p class="badge text bg-@className">
+            Katılıyor
+        </p>
+    } else
+    {
+        <p class="badge text bg-@className">
+            Katılmıyor
+        </p>
+    }
 
-    <p>
-        <span class="badge text-bg-secondary">Katılıyor</span>
-    </p>
 
     <p>İsim: @Model.Name</p>
     <p>Email: @Model.Email</p>
     <p>Telefon: @Model.Phone</p>
+    @* Href etiketi kullanmak yerine, asp-controller ve asp-action kullanarak, url oluşturabiliriz.
+    asp-controller, controller adını, asp-action ise action(view adı) adını alır. *@
+    <a asp-controller="Meeting" asp-action="List" class="btn btn-outline-@className">Katılımcı Listesi</a>
 </main>
