@@ -4,19 +4,20 @@
 
 <h1 class="h4 text-center">Toplantı Katılım Formu</h1>
 
-<form action="">
+<form method="post" action="/Meeting/Apply">
     <div class="mb-3">
-        <label for="name">Name</label>
-        <input type="text" value="Name" id="name" class="form-control" />
+        <label for="Name">Name</label>
+        <input type="text" name="Name" id="Name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label for="Phone">Phone</label>
+        <input type="text" name="Phone" id=" Phone" class="form-control" />
     </div>
 
     <div class="mb-3">
         <label for="Email">Email</label>
-        <input type="email" value="Email" id="Email" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label for="Phone">Phone</label>
-        <input type="number" value="Phone" id="Phone" class="form-control" />
+        <input type="email" name="Email" id=" Email" class="form-control" />
     </div>
 
     <div class="mb-3">
@@ -24,7 +25,6 @@
         <select name="WillAttend" id="WillAttend" class="form-select">
             <option value="true">Evet, geliyorum</option>
             <option value="false">Hayır, gelmiyorum</option>
-
         </select>
     </div>
 
