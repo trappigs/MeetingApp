@@ -26,13 +26,26 @@ namespace MeetingApp.Controllers
         // bu örnekte formun action özelliği "/Meeting/Apply" şeklinde ayarlanmıştır.
         // bu durumda form submit edildiğinde bu metot çalışacaktır.
         // bu metotun çalışması için formun method özelliğinin "post" olması gerekmektedir.
+
+        // Farkettiğiniz üzere, amacımız toplantıya katılacak kişileri kaydetmek, bunun için
+        // Repository sınıfımızda bir metod oluşturduk ve sıra bu metodu, kayıt yani Apply
+        // metodumuzda çağırmaya geldi
         [HttpPost]
         public IActionResult Apply(UserInfo model)
         {
-            System.Diagnostics.Debug.WriteLine(model.Name+"ahahahasad");
-            System.Diagnostics.Debug.WriteLine(model.Phone);
+            // CreateUser metoduna modelimizi göndererek, kullanıcıyı kaydediyoruz
+            Repository.CreateUser(model);
 
-            return View();
+            // Kullanıcıya katılımcı sayısını gösterebilmek adına bir ViewBag oluşturup, kullanıyoruz
+            // Sadece katılan kişilerin sayısını göstermek istediğimiz için, bir koşul ekliyoruz
+            // bu koşul bir linq expression olarak geçiyor
+            ViewBag.UserCount = Repository.Users.Where(i => i.WillAttend == true).Count();
+
+
+            // Kullanıcı kaydını gerçekleştirdiği için, teşekkür(thanks) sayfasına(veiwine) yönlendiriyoruz
+            // thanks sayfasının, kullanıcıya hitap etmek için kaydını gerçekleştirdiğimiz bilgileri
+            // model ile gönderiyoruz
+            return View("Thanks", model);
         }
 
         [HttpGet]
