@@ -5,8 +5,6 @@ namespace MeetingApp.Controllers
 {
     public class MeetingController : Controller
     {
-
-
         [HttpGet]
         public IActionResult Index()
         {
@@ -33,19 +31,19 @@ namespace MeetingApp.Controllers
         [HttpPost]
         public IActionResult Apply(UserInfo model)
         {
-            // CreateUser metoduna modelimizi göndererek, kullanıcıyı kaydediyoruz
-            Repository.CreateUser(model);
 
-            // Kullanıcıya katılımcı sayısını gösterebilmek adına bir ViewBag oluşturup, kullanıyoruz
-            // Sadece katılan kişilerin sayısını göstermek istediğimiz için, bir koşul ekliyoruz
-            // bu koşul bir linq expression olarak geçiyor
-            ViewBag.UserCount = Repository.Users.Where(i => i.WillAttend == true).Count();
+            if (ModelState.IsValid == true)
+            {
+                Repository.CreateUser(model);
 
+                ViewBag.UserCount = Repository.Users.Where(i => i.WillAttend == true).Count();
 
-            // Kullanıcı kaydını gerçekleştirdiği için, teşekkür(thanks) sayfasına(veiwine) yönlendiriyoruz
-            // thanks sayfasının, kullanıcıya hitap etmek için kaydını gerçekleştirdiğimiz bilgileri
-            // model ile gönderiyoruz
-            return View("Thanks", model);
+                return View("Thanks", model);
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]
